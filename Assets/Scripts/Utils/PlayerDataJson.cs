@@ -18,6 +18,12 @@ public static class PlayerDataJson
         json += tab + "\"vie\":" + data.Vie + "," + newline;
         json += tab + "\"energie\":" + data.Energie + "," + newline;
         json += tab + "\"score\":" + data.Score + "," + newline;
+        json += tab + "\"niveau\":" + data.Niveau + "," + newline;
+        json += tab + "\"scorehoney\":" + data.ScoreHoney + "," + newline;
+        json += tab + "\"scoremaple\":" + data.ScoreMaple + "," + newline;
+        json += tab + "\"scorecard\":" + data.ScoreCard + "," + newline;
+        json += tab + "\"scoresheets\":" + data.ScoreSheets + "," + newline;
+        json += tab + "\"scorechest\":" + data.ScoreChest + "," + newline;
         json += tab + "\"volumeGeneral\":" + data.VolumeGeneral.ToString().Replace(',', '.') + "," + newline; 
         json += tab + "\"volumeMusique\":" + data.VolumeMusique.ToString().Replace(',', '.') + "," + newline; 
         json += tab + "\"volumeEffet\":" + data.VolumeEffet.ToString().Replace(',', '.') + "," + newline; 
@@ -59,6 +65,7 @@ public static class PlayerDataJson
         json = json.Replace("\t", string.Empty);
 
         int vie = 0, energie = 0, score = 0;
+        int niveau = 0, scorehoney = 0, scoremaple = 0, scorecard = 0, scoresheets = 0, scorechest = 0;
         float vlmGeneral = 0, vlmMusique = 0, vlmEffet = 0;
         List<string> chests = new List<string>();
         string[] lignes = json.Split('\n');
@@ -82,6 +89,31 @@ public static class PlayerDataJson
                 case "\"score\"":
                     score = int.Parse(parametre[1].Replace(",", string.Empty));
                     break;
+
+                case "\"niveau\"":
+                    niveau = int.Parse(parametre[1].Replace(",", string.Empty));
+                    break;
+
+                case "\"scorehoney\"":
+                    scorehoney = int.Parse(parametre[1].Replace(",", string.Empty));
+                    break;
+
+                case "\"scoremaple\"":
+                    scoremaple = int.Parse(parametre[1].Replace(",", string.Empty));
+                    break;
+
+                case "\"scorecard\"":
+                    scorecard = int.Parse(parametre[1].Replace(",", string.Empty));
+                    break;
+
+                case "\"scoresheets\"":
+                    scoresheets = int.Parse(parametre[1].Replace(",", string.Empty));
+                    break;
+
+                case "\"scorechest\"":
+                    scorechest = int.Parse(parametre[1].Replace(",", string.Empty));
+                    break;
+
                 case "\"volumeGeneral\"":
                     vlmGeneral = float.Parse(parametre[1].Replace(",", string.Empty).Replace('.', ','));
                     break;
@@ -106,7 +138,7 @@ public static class PlayerDataJson
             }
         }
 
-        return new PlayerData(vie, energie, score, vlmGeneral, vlmMusique, vlmEffet, ChestList: chests);
+        return new PlayerData(vie, energie, score, niveau, scorehoney, scoremaple, scorecard, scoresheets, scorechest, vlmGeneral, vlmMusique, vlmEffet, ChestList: chests);
     }
 }
 

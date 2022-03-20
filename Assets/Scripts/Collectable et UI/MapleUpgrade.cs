@@ -2,14 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScoreUpgrade : MonoBehaviour
+public class MapleUpgrade : MonoBehaviour
 {
-    /// <summary>
-    /// Valeur de l'énergie regagner au contact
-    /// </summary>
     [SerializeField]
-    private int _gainPoint = 3;
-    private int _incrSheets = 1;
+    private int _gainPoint = 7;
+    private int _incrMaple = 1;
     [SerializeField]
     private AudioClip _clip;
 
@@ -22,7 +19,7 @@ public class ScoreUpgrade : MonoBehaviour
             GameManager.Instance
                 .PlayerData.IncrScore(this._gainPoint);
             GameManager.Instance
-                .PlayerData.IncrScoreSheets(this._incrSheets);
+                .PlayerData.IncrScoreMaple(this._incrMaple);
             GameObject.Destroy(this.gameObject);
         }
     }

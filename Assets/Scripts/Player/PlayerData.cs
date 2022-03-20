@@ -29,6 +29,13 @@ public class PlayerData
     private float _volumeEffet = 0;
     public float VolumeEffet { get { return _volumeEffet; } set { _volumeEffet = value; } }
 
+
+    private int _niveau;
+    private int _scorehoney;
+    private int _scoremaple;
+    private int _scorecard;
+    private int _scoresheets;
+    private int _scorechest;
     /// <summary>
     /// Représente le nombre de points de vie du personnage
     /// </summary>
@@ -66,12 +73,25 @@ public class PlayerData
 
     public int Energie { get { return this._energie; } }
     public int Vie { get { return this._vie; } }
+    public int Niveau { get { return this._niveau; } }
+    public int ScoreHoney { get { return this._scorehoney; } }
+    public int ScoreMaple { get { return this._scoremaple; } }
+    public int ScoreCard { get { return this._scorecard; } }
+    public int ScoreSheets { get { return this._scoresheets; } }
+    public int ScoreChest { get { return this._scorechest; } }
     public int Score { get { return this._score; } }
     public string[] ListeCoffreOuvert { get { return this._chestOpenList.ToArray(); } }
 
     public PlayerData()
     {
+        this._niveau = 1;
+        this._scorehoney = 0;
+        this._scoremaple = 0;
+        this._scorecard = 0;
+        this._scoresheets = 0;
+        this._scorechest = 0;
         this._vie = 0;
+
         this._energie = 0;
         this._score = 0;
         this._volumeGeneral = 0;
@@ -84,6 +104,8 @@ public class PlayerData
     }
 
     public PlayerData(int vie = 1, int energie = 2, int score = 0,
+        int niveau = 1, int scorehoney = 0, int scoremaple = 0,
+        int scorecard = 0, int scoresheets = 0, int scorechest = 0,
         float volumeGeneral = 0, float volumeMusique = 0, float volumeEffet = 0,
         System.Action uiPerteEnergie = null, System.Action uiPerteVie = null,
         System.Action gameOver = null, List<string> ChestList = null)
@@ -91,6 +113,12 @@ public class PlayerData
         this._vie = vie;
         this._energie = energie;
         this._score = score;
+        this._niveau = niveau;
+        this._scorehoney = scorehoney;
+        this._scoremaple = scoremaple;
+        this._scorecard = scorecard;
+        this._scoresheets = scoresheets;
+        this._scorechest = scorechest;
         this._volumeGeneral = volumeGeneral;
         this._volumeMusique = volumeMusique;
         this._volumeEffet = volumeEffet;
@@ -165,6 +193,36 @@ public class PlayerData
     public void IncrScore(int gain = 1)
     {
         this._score += gain;
+    }
+
+    public void IncrNiveau(int gain = 1)
+    {
+        this._niveau += gain;
+    }
+
+    public void IncrScoreHoney(int gain = 1)
+    {
+        this._scorehoney += gain;
+    }
+
+    public void IncrScoreMaple(int gain = 1)
+    {
+        this._scoremaple += gain;
+    }
+
+    public void IncrScoreCard(int gain = 1)
+    {
+        this._scorecard += gain;
+    }
+
+    public void IncrScoreSheets(int gain = 1)
+    {
+        this._scoresheets += gain;
+    }
+
+    public void IncrScoreChest(int gain = 1)
+    {
+        this._scorechest += gain;
     }
 
     /// <summary>

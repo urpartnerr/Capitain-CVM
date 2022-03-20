@@ -9,6 +9,7 @@ public class EnergyUpgrade : MonoBehaviour
     /// </summary>
     [SerializeField]
     private int _regainEnergie = 1;
+    private int _incrCard = 1;
     [SerializeField]
     private AudioClip _clip;
 
@@ -20,6 +21,8 @@ public class EnergyUpgrade : MonoBehaviour
                 .PlayClipAtPoint(_clip, this.transform.position);
             GameManager.Instance
                 .PlayerData.IncrEnergie(this._regainEnergie);
+            GameManager.Instance
+                .PlayerData.IncrScoreCard(this._incrCard);
             GameObject.Destroy(this.gameObject);
         }
     }

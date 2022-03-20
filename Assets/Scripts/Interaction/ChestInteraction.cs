@@ -13,6 +13,8 @@ public class ChestInteraction : BaseInteraction
     [SerializeField, Range(0, 25)]
     private int _scoreBonus;
 
+    
+
     /// <summary>
     /// Détermine si le coffre est ouvert
     /// </summary>
@@ -30,6 +32,8 @@ public class ChestInteraction : BaseInteraction
     /// Le nom est autogénéré dans la méthode Start
     /// </summary>
     private string _name;
+
+    private int _incrChest = 1;
 
     private void Start()
     {
@@ -51,6 +55,7 @@ public class ChestInteraction : BaseInteraction
             this.gameObject.GetComponent<SpriteRenderer>().sprite = _coffreOuvert;
             this.ArreterInteraction();
             GameManager.Instance.PlayerData.AjouterCoffreOuvert(_name);
+            GameManager.Instance.PlayerData.IncrScoreChest(this._incrChest);
         }
     }
 }
